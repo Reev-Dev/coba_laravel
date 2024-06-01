@@ -17,7 +17,8 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="nama-siswa" class="form-label">Nama Siswa</label>
-                            <input type="text" name="nama_siswa" class="form-control" autofocus autocomplete="off">
+                            <input type="text" name="nama_siswa" class="form-control" autofocus autocomplete="off"
+                                value="{{ old('nama_siswa') }}">
                             @error('nama_siswa')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -27,9 +28,9 @@
                             <select class="form-select tom-selected ts-hidden-accessible" name="kelas_siswa"
                                 aria-placeholder="Pilih Kelas">
                                 <option value="">Pilih Kelas</option>
-                                <option value="1">Kelas 10</option>
-                                <option value="2">Kelas 11</option>
-                                <option value="3">Kelas 12</option>
+                                <option value="10" @if (old('kelas_siswa') == 10) selected @endif>Kelas 10</option>
+                                <option value="11" @if (old('kelas_siswa') == 11) selected @endif>Kelas 11</option>
+                                <option value="12" @if (old('kelas_siswa') == 12) selected @endif>Kelas 12</option>
                             </select>
                             @error('kelas_siswa')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -37,7 +38,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="domisili_siswa" class="form-label">Domisili</label>
-                            <input type="text" name="domisili_siswa" class="form-control" autocomplete="off">
+                            <input type="text" name="domisili_siswa" class="form-control" autocomplete="off"
+                                value="{{ old('domisili_siswa') }}">
                             @error('domisili_siswa')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
