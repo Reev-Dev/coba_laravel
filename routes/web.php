@@ -3,6 +3,7 @@
 use App\Models\Kategori;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KategoriController;
 
@@ -31,4 +32,13 @@ Route::controller(SiswaController::class)->group(function () {
     Route::get('/siswa-edit/{id}', 'edit')->name('siswa.edit');
     Route::put('/siswa-edit/{id}', 'update')->name('siswa.update');
     Route::delete('siswa/{id}', 'destroy')->name('siswa.delete');
+});
+
+Route::controller(KelasController::class)->group(function () {
+    Route::get('/kelas', 'index')->name('kelas');
+    Route::get('/kelas-create', 'create')->name('kelas.create');
+    Route::post('/kelas', 'store')->name('kelas.perform');
+    Route::get('/kelas-edit/{id}', 'edit')->name('kelas.edit');
+    Route::put('/kelas-edit/{id}', 'update')->name('kelas.update');
+    Route::delete('kelas/{id}', 'destroy')->name('kelas.delete');
 });

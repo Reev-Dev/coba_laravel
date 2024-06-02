@@ -24,7 +24,6 @@
                 </div>
             @endsession
             <div class="mb-4">
-                <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah</a>
                 <a href="{{ route('siswa.create') }}" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#modal-report">
                     Tambah Siswa
@@ -49,7 +48,7 @@
                                             <div class="text-danger mt-2">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <label class="form-label">Kelas</label>
                                         <select class="form-select tom-selected ts-hidden-accessible" name="kelas_siswa"
                                             aria-placeholder="Pilih Kelas">
@@ -66,6 +65,19 @@
                                         </select>
                                         @error('kelas_siswa')
                                             <div class="text-danger mt-2">{{ $message }}</div>
+                                        @enderror
+                                    </div> --}}
+                                    <div class="mb-3">
+                                        <label class="form-label">Kelas</label>
+                                        <select class="form-select tom-selected ts-hidden-accessible" name="kelas_id"
+                                            id="kelas_id">
+                                            <option selected="" value="">-- Pilih Kelas --</option>
+                                            @foreach ($kelas as $itemk)
+                                                <option value="{{ $itemk->id }}">{{ $itemk->nama_kelas }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('kelas_id')
+                                            <p class='text-danger mb-0 text-xs pt-1'> {{ $message }} </p>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
@@ -128,7 +140,7 @@
                                         {{ $item->nama_siswa }}
                                     </td>
                                     <td>
-                                        {{ $item->kelas_siswa }}
+                                        {{ $item->kelas->nama_kelas }}
                                     </td>
                                     <td>
                                         {{ $item->domisili_siswa }}
@@ -175,7 +187,8 @@
                                                         <path d="M12 17h.01" />
                                                     </svg>
                                                     <h3>Are you sure?</h3>
-                                                    <div class="text-muted">Apakah Anda yakin ingin menghapus data ini?</div>
+                                                    <div class="text-muted">Apakah Anda yakin ingin menghapus data ini?
+                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="w-100">
@@ -184,8 +197,8 @@
                                                                     data-bs-dismiss="modal">
                                                                     Batal
                                                                 </a></div>
-                                                            <div class="col"><button type="submit" class="btn btn-danger w-100"
-                                                                    data-bs-dismiss="modal">
+                                                            <div class="col"><button type="submit"
+                                                                    class="btn btn-danger w-100" data-bs-dismiss="modal">
                                                                     Hapus
                                                                 </button></div>
                                                         </div>

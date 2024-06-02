@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
@@ -10,8 +11,9 @@ class SiswaController extends Controller
     public function index()
     {
         $siswa = Siswa::get();
+        $kelas = Kelas::get();
 
-        return view("admin.siswa.siswa", compact("siswa"));
+        return view("admin.siswa.siswa", compact("siswa", "kelas"));
     }
     public function create()
     {
@@ -21,17 +23,17 @@ class SiswaController extends Controller
     {
         $request->validate([
             "nama_siswa" => "required",
-            "kelas_siswa" => "required",
+            "kelas_id" => "required",
             "domisili_siswa" => "required",
         ], [
             "nama_siswa.required" => "Nama Siswa harus diisi",
-            "kelas_siswa.required" => "Kelas Siswa harus diisi",
+            "kelas_id.required" => "Kelas Siswa harus diisi",
             "domisili_siswa.required" => "Domisili Siswa harus diisi",
         ]);
 
         Siswa::create([
             "nama_siswa" => $request->nama_siswa,
-            "kelas_siswa" => $request->kelas_siswa,
+            "kelas_id" => $request->kelas_id,
             "domisili_siswa" => $request->domisili_siswa,
         ]);
 
@@ -47,17 +49,17 @@ class SiswaController extends Controller
     {
         $request->validate([
             "nama_siswa" => "required",
-            "kelas_siswa" => "required",
+            "kelas_id" => "required",
             "domisili_siswa" => "required",
         ], [
             "nama_siswa.required" => "Nama Siswa harus diisi",
-            "kelas_siswa.required" => "Kelas Siswa harus diisi",
+            "kelas_id.required" => "Kelas Siswa harus diisi",
             "domisili_siswa.required" => "Domisili Siswa harus diisi",
         ]);
 
         Siswa::findOrFail($id)->update([
             "siswa" => $request->nama_siswa,
-            "kelas_siswa" => $request->kelas_siswa,
+            "kelas_id" => $request->kelas_id,
             "domisili_siswa" => $request->domisili_siswa,
         ]);
 

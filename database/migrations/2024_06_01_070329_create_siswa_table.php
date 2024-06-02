@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
             $table->string('nama_siswa');
-            $table->integer('kelas_siswa');
+            $table->unsignedBigInteger('kelas_id');
+            $table->foreign("kelas_id")->references('id')->on('kelas')->cascadeOnDelete();
             $table->string('domisili_siswa');
             $table->timestamps();
         });
