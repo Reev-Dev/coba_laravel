@@ -66,14 +66,6 @@
                         </div>
                     </div>
                 </div>
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                        @if ($errors->any())
-                            var myModal = new bootstrap.Modal(document.getElementById('modal-report'));
-                            myModal.show();
-                        @endif
-                    });
-                </script>
             </div>
             <div class="card">
                 <div class="table-responsive">
@@ -171,6 +163,14 @@
                     </table>
                 </div>
             </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    @if ($errors->any())
+                        var myModal = new bootstrap.Modal(document.getElementById('modal-report'));
+                        myModal.show();
+                    @endif
+                });
+            </script>
         </div>
     </div>
 @endsection

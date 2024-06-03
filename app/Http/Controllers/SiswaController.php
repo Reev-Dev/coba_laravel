@@ -42,6 +42,7 @@ class SiswaController extends Controller
     public function edit($id)
     {
         $siswa = Siswa::findOrFail($id);
+        $kelas = Kelas::findOrFail($id);
 
         return view("admin.siswa.edit", compact("siswa"));
     }
@@ -58,7 +59,7 @@ class SiswaController extends Controller
         ]);
 
         Siswa::findOrFail($id)->update([
-            "siswa" => $request->nama_siswa,
+            "nama_siswa" => $request->nama_siswa,
             "kelas_id" => $request->kelas_id,
             "domisili_siswa" => $request->domisili_siswa,
         ]);
